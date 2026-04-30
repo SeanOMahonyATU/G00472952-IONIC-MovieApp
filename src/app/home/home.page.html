@@ -1,20 +1,41 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>G00472952</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="openFavourites()">
+        <ion-icon name="heart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input
+      label="Search"
+      labelPlacement="stacked"
+      placeholder="Movie Name"
+      [(ngModel)]="searchText">
+    </ion-input>
+  </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-button expand="block" class="ion-margin-top" (click)="onSearch()">
+    SEARCH
+  </ion-button>
+
+  <h2>{{ pageTitle }}</h2>
+
+  <ion-card *ngFor="let movie of movies" (click)="openMovieDetails(movie.id)">
+    <img
+      *ngIf="movie.poster_path"
+      [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+      alt="Movie poster"
+    />
+
+    <ion-card-content>
+      <h3>{{ movie.title }}</h3>
+      <p>{{ movie.overview }}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
