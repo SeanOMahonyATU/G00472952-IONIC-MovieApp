@@ -64,17 +64,5 @@
   </ion-card-content>
 </ion-card>
 
-  <h2>Crew</h2>
-  <ion-card *ngFor="let person of crew">
-    <ion-card-content>
-      <img
-        *ngIf="person.profile_path"
-        [src]="'https://image.tmdb.org/t/p/w500' + person.profile_path"
-        alt="Crew photo"
-        style="width: 100px;"
-      />
-      <h3>{{ person.name }}</h3>
-      <p>{{ person.job }}</p>
-    </ion-card-content>
-  </ion-card>
+  
 </ion-content>
