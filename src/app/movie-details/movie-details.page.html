@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goHome()">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>{{ movie?.title || 'Movie Details' }}</ion-title>
+  <ion-buttons slot="end">
+      <ion-button (click)="openFavourites()">
+        <ion-icon name="heart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> 
+
+
+<ion-content class="ion-padding" *ngIf="movie">
+  <ion-card>
+    <img
+      *ngIf="movie.poster_path"
+      [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+      alt="Movie poster"
+    />
+    <ion-card-content>
+      <p>{{ movie.overview }}</p>
+
+      <ion-button expand="block" color="danger" (click)="toggleFavourite()">
+        <ion-icon
+          [name]="isFavourite ? 'heart' : 'heart-outline'"
+          slot="start">
+        </ion-icon>
+        {{ isFavourite ? 'Remove from Favourites' : 'Add to Favourites' }}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <h2>Cast</h2>
+<ion-card *ngFor="let person of cast" (click)="openPersonDetails(person.id)">
+  <ion-card-content>
+    <img
+      *ngIf="person.profile_path"
+      [src]="'https://image.tmdb.org/t/p/w200' + person.profile_path"
+      alt="Cast photo"
+      style="width: 100px;"
+    />
+    <h3>{{ person.name }}</h3>
+    <p>{{ person.character }}</p>
+  </ion-card-content>
+</ion-card>
+
+<h2>Crew</h2>
+<ion-card *ngFor="let person of crew" (click)="openPersonDetails(person.id)">
+  <ion-card-content>
+    <img
+      *ngIf="person.profile_path"
+      [src]="'https://image.tmdb.org/t/p/w200' + person.profile_path"
+      alt="Crew photo"
+      style="width: 100px;"
+    />
+    <h3>{{ person.name }}</h3>
+    <p>{{ person.job }}</p>
+  </ion-card-content>
+</ion-card>
+
+  <h2>Crew</h2>
+  <ion-card *ngFor="let person of crew">
+    <ion-card-content>
+      <img
+        *ngIf="person.profile_path"
+        [src]="'https://image.tmdb.org/t/p/w500' + person.profile_path"
+        alt="Crew photo"
+        style="width: 100px;"
+      />
+      <h3>{{ person.name }}</h3>
+      <p>{{ person.job }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
