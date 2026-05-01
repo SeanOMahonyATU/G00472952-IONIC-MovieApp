@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   IonHeader,
   IonToolbar,
@@ -24,22 +24,23 @@ import { TmdbService } from '../services/tmdb.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonButtons,
-    IonButton,
-    IonIcon,
-    IonItem,
-    IonInput,
-    IonCard,
-    IonCardContent,
-    NgFor,
-    NgIf,
-    FormsModule
-  ],
+ imports: [
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonButtons,
+  IonButton,
+  IonIcon,
+  IonItem,
+  IonInput,
+  IonCard,
+  IonCardContent,
+  NgFor,
+  NgIf,
+  FormsModule,
+  RouterLink
+],
 })
 export class HomePage implements OnInit {
   movies: any[] = [];

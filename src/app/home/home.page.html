@@ -26,7 +26,7 @@
 
   <h2>{{ pageTitle }}</h2>
 
-  <ion-card *ngFor="let movie of movies" (click)="openMovieDetails(movie.id)">
+  <ion-card *ngFor="let movie of movies" [routerLink]="['/movie-details', movie.id]">
     <img
       *ngIf="movie.poster_path"
       [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
