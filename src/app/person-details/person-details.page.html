@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goHome()">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ person?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="person">
+  <ion-card>
+    <ion-card-content>
+      <img
+        *ngIf="person.profile_path; else noImage"
+        [src]="'https://image.tmdb.org/t/p/w300' + person.profile_path"
+        alt="Profile image"
+      />
+      <ng-template #noImage>
+        <p>No image available</p>
+      </ng-template>
+
+      <p *ngIf="person.birthday"><strong>DOB:</strong> {{ person.birthday }}</p>
+      <p *ngIf="person.deathday"><strong>DOD:</strong> {{ person.deathday }}</p>
+      <p *ngIf="person.also_known_as?.length">
+        <strong>Also Known As:</strong> {{ person.also_known_as.join(', ') }}
+      </p>
+      <p *ngIf="person.biography">{{ person.biography }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <h2>Other Movies</h2>
+  <ion-card *ngFor="let movie of movieCredits" (click)="openMovieDetails(movie.id)">
+    <ion-card-content>
+      <img
+        *ngIf="movie.poster_path"
+        [src]="'https://image.tmdb.org/t/p/w200' + movie.poster_path"
+        alt="Movie poster"
+        style="width: 100px;"
+      />
+      <h3>{{ movie.title }}</h3>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
