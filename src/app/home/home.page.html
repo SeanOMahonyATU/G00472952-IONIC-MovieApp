@@ -11,12 +11,14 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+
   <ion-item>
     <ion-input
       label="Search"
       labelPlacement="stacked"
       placeholder="Movie Name"
-      [(ngModel)]="searchText">
+      [(ngModel)]="searchText"
+      (keyup.enter)="onSearch()">
     </ion-input>
   </ion-item>
 
@@ -24,7 +26,13 @@
     SEARCH
   </ion-button>
 
+  <ion-spinner *ngIf="loading"></ion-spinner>
+
   <h2>{{ pageTitle }}</h2>
+
+  <p *ngIf="!loading && movies.length === 0">
+    No movies found
+  </p>
 
   <ion-card *ngFor="let movie of movies" [routerLink]="['/movie-details', movie.id]">
     <img
@@ -38,4 +46,5 @@
       <p>{{ movie.overview }}</p>
     </ion-card-content>
   </ion-card>
+
 </ion-content>
