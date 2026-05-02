@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goHome()">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Favourite Movies</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="favouriteMovies.length === 0">
+    <p>No favourite movies added yet.</p>
+  </div>
+
+  <ion-card *ngFor="let movie of favouriteMovies">
+    <img
+      *ngIf="movie.poster_path"
+      [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+      alt="Movie poster"
+    />
+
+    <ion-card-header>
+      <ion-card-title>{{ movie.title }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-button size="small" (click)="openMovieDetails(movie.id)">
+        Details
+      </ion-button>
+
+      <ion-button size="small" color="danger" (click)="removeFavourite(movie)">
+        Remove
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

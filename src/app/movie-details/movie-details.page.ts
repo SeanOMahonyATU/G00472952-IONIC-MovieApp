@@ -99,6 +99,6 @@ export class MovieDetailsPage implements OnInit {
     this.router.navigate(['/favourites']);
   }
   openPersonDetails(personId: number): void {
-  this.router.navigate(['/person', personId]);
+  this.router.navigate(['/person-details', personId]);
 }
 }

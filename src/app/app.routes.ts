@@ -13,6 +13,10 @@ export const routes: Routes = [
   path: 'person/:id',
   loadComponent: () => import('./person-details/person-details.page').then(m => m.PersonDetailsPage),
 },
+{
+  path: 'favourites',
+  loadComponent: () => import('./favourites/favourites.page').then(m => m.FavouritesPage),
+},
   {
     path: '',
     redirectTo: 'home',
