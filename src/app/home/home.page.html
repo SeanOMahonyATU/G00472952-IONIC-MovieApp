@@ -9,7 +9,7 @@
       <ion-button (click)="openFavourites()">
 
          <!-- Heart icon -->
-        <ion-icon name="heart"></ion-icon>
+         <ion-icon name="heart" color="danger"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -29,6 +29,15 @@
       (keyup.enter)="onSearch()">
     </ion-input>
   </ion-item>
+
+  <ion-button
+  expand="block"
+  fill="outline"
+  color="medium"
+  class="ion-margin-top"
+  (click)="clearSearch()">
+  CLEAR SEARCH
+</ion-button>
 
   <!-- Search button -->
   <ion-button expand="block" class="ion-margin-top" (click)="onSearch()">

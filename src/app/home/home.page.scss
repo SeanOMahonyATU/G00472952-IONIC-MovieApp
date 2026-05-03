@@ -14,7 +14,8 @@ ion-card:hover {
 
 ion-card img {
   width: 100%;
-  height: auto;
+  height: 450px;
+  object-fit: cover;
   display: block;
 }
 
