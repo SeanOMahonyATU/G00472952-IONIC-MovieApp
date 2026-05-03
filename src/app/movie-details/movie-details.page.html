@@ -24,10 +24,13 @@
   <ion-card>
     <!-- Movie poster -->
     <img
-      *ngIf="movie.poster_path"
+      *ngIf="movie.poster_path; else noImage"
       [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
       alt="Movie poster"
     />
+    <ng-template #noImage>
+  <p class="no-image">No image</p>
+</ng-template>
     <ion-card-content>
        <!-- Movie description -->
       <p>{{ movie.overview }}</p>
@@ -48,11 +51,15 @@
 <ion-card *ngFor="let person of cast" (click)="openPersonDetails(person.id)">
   <ion-card-content>
     <img 
-      *ngIf="person.profile_path"
-      [src]="'https://image.tmdb.org/t/p/w200' + person.profile_path"
-      alt="Cast photo"
-      style="width: 100px;"
-    />
+  *ngIf="person.profile_path; else noCastImage"
+  [src]="'https://image.tmdb.org/t/p/w200' + person.profile_path"
+  alt="Cast photo"
+  class="person-image"
+/>
+
+<ng-template #noCastImage>
+  <p class="no-image">No image</p>
+</ng-template>
      <!-- Cast name and character -->
     <h3>{{ person.name }}</h3>
     <p>{{ person.character }}</p>
@@ -64,12 +71,16 @@
 <!-- Loop through crew array -->
 <ion-card *ngFor="let person of crew" (click)="openPersonDetails(person.id)">
   <ion-card-content>
-    <img
-      *ngIf="person.profile_path"
-      [src]="'https://image.tmdb.org/t/p/w200' + person.profile_path"
-      alt="Crew photo"
-      style="width: 100px;"
-    />
+   <img
+  *ngIf="person.profile_path; else noCrewImage"
+  [src]="'https://image.tmdb.org/t/p/w200' + person.profile_path"
+  alt="Crew photo"
+  class="person-image"
+/>
+
+<ng-template #noCrewImage>
+  <p class="no-image">No image</p>
+</ng-template>
     <h3>{{ person.name }}</h3>
     <p>{{ person.job }}</p>
   </ion-card-content>
