@@ -1,12 +1,16 @@
+<!-- Header -->
 <ion-header>
   <ion-toolbar>
+     <!-- Home button -->
     <ion-buttons slot="start">
       <ion-button (click)="goHome()">
         <ion-icon name="home"></ion-icon>
       </ion-button>
     </ion-buttons>
 
+    <!-- Page title  -->
     <ion-title>{{ movie?.title || 'Movie Details' }}</ion-title>
+     <!-- Favourites button -->
   <ion-buttons slot="end">
       <ion-button (click)="openFavourites()">
         <ion-icon name="heart"></ion-icon>
@@ -15,15 +19,17 @@
   </ion-toolbar>
 </ion-header> 
 
-
+<!-- Main content  -->
 <ion-content class="ion-padding" *ngIf="movie">
   <ion-card>
+    <!-- Movie poster -->
     <img
       *ngIf="movie.poster_path"
       [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
       alt="Movie poster"
     />
     <ion-card-content>
+       <!-- Movie description -->
       <p>{{ movie.overview }}</p>
 
       <ion-button expand="block" color="danger" (click)="toggleFavourite()">
@@ -36,21 +42,26 @@
     </ion-card-content>
   </ion-card>
 
+<!-- Cast section -->
   <h2>Cast</h2>
+   <!-- Loop through cast array -->
 <ion-card *ngFor="let person of cast" (click)="openPersonDetails(person.id)">
   <ion-card-content>
-    <img
+    <img 
       *ngIf="person.profile_path"
       [src]="'https://image.tmdb.org/t/p/w200' + person.profile_path"
       alt="Cast photo"
       style="width: 100px;"
     />
+     <!-- Cast name and character -->
     <h3>{{ person.name }}</h3>
     <p>{{ person.character }}</p>
   </ion-card-content>
 </ion-card>
 
+<!-- Crew section -->
 <h2>Crew</h2>
+<!-- Loop through crew array -->
 <ion-card *ngFor="let person of crew" (click)="openPersonDetails(person.id)">
   <ion-card-content>
     <img

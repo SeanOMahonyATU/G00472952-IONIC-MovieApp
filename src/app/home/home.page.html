@@ -1,46 +1,58 @@
+<!-- Header  -->
 <ion-header>
   <ion-toolbar>
+    <!-- Student number -->
     <ion-title>G00472952</ion-title>
 
+    <!-- Button for the favourites page -->
     <ion-buttons slot="end">
       <ion-button (click)="openFavourites()">
+
+         <!-- Heart icon -->
         <ion-icon name="heart"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+<!-- Main content -->
 <ion-content class="ion-padding">
 
+  <!-- search input field-->
   <ion-item>
     <ion-input
       label="Search"
       labelPlacement="stacked"
       placeholder="Movie Name"
-      [(ngModel)]="searchText"
+      [(ngModel)]="searchText"  
+      
       (keyup.enter)="onSearch()">
     </ion-input>
   </ion-item>
 
+  <!-- Search button -->
   <ion-button expand="block" class="ion-margin-top" (click)="onSearch()">
     SEARCH
   </ion-button>
 
+  <!-- Loading spinner shown while fetching data -->
   <ion-spinner *ngIf="loading"></ion-spinner>
 
+  <!-- Page title (e.g. Trending Movies or Search Results) -->
   <h2>{{ pageTitle }}</h2>
-
+<!-- Message if no movies found -->
   <p *ngIf="!loading && movies.length === 0">
     No movies found
   </p>
 
+ <!-- Loop through movies array and display each movie -->
   <ion-card *ngFor="let movie of movies" [routerLink]="['/movie-details', movie.id]">
     <img
       *ngIf="movie.poster_path"
       [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
       alt="Movie poster"
     />
-
+<!-- Movie details -->
     <ion-card-content>
       <h3>{{ movie.title }}</h3>
       <p>{{ movie.overview }}</p>
