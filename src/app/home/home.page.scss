@@ -1,36 +1,64 @@
-ion-card {
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-ion-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-ion-card img {
-  width: 100%;
-  height: 450px;
-  object-fit: cover;
-  display: block;
-}
-
-ion-card-content h3 {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  font-size: 1.2rem;
-}
-
-ion-card-content p {
-  line-height: 1.5;
-  color: #444;
+ion-content {
+  --background: #f4f5f8;
 }
 
 h2 {
-  margin-top: 20px;
-  margin-bottom: 16px;
+  margin: 24px auto 16px;
+  max-width: 500px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.movie-card {
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+}
+
+.movie-card h3 {
+  margin: 0 0 18px 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #222;
+  text-align: center;
+}
+.poster-wrapper {
+  margin-bottom: 28px;
+}
+
+.poster-wrapper {
+  width: 100%;
+  background: #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poster-wrapper img {
+  width: 100%;
+  max-height: 650px;
+  object-fit: contain;
+  display: block;
+}
+
+.movie-card p {
+  margin: 0;
+  line-height: 1.5;
+  color: #444;
+  text-align: left;
+}
+
+.no-image {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-weight: bold;
 }
