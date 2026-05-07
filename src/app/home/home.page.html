@@ -45,30 +45,31 @@
   </p>
 
   <!-- Movie cards -->
-<ion-card
-  class="movie-card"
-  *ngFor="let movie of movies"
-  [routerLink]="['/movie-details', movie.id]">
+  <ion-card
+    class="movie-card"
+    *ngFor="let movie of movies"
+    [routerLink]="['/movie-details', movie.id]">
 
-  <ion-card-content>
-    <h3>{{ movie.title }}</h3>
-  </ion-card-content>
+    <ion-card-content>
+      <h3>{{ movie.title }}</h3>
+    </ion-card-content>
 
-  <div class="poster-wrapper">
-    <img
-      *ngIf="movie.poster_path; else noImage"
-      [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
-      alt="Movie poster"
-    />
+    <div class="poster-wrapper">
+      <img
+        *ngIf="movie.poster_path; else noImage"
+        [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+        alt="Movie poster"
+      />
 
-    <ng-template #noImage>
-      <p class="no-image">No image</p>
-    </ng-template>
-  </div>
+      <ng-template #noImage>
+        <p class="no-image">No image</p>
+      </ng-template>
+    </div>
 
-  <ion-card-content>
-    <p>{{ movie.overview }}</p>
-  </ion-card-content>
+    <ion-card-content>
+      <p>{{ movie.overview }}</p>
+    </ion-card-content>
 
-</ion-card>
+  </ion-card>
 
+</ion-content>
